@@ -1,0 +1,29 @@
+# You'll need to set the following in either your environment or in a .env
+# file in the root of the project
+#
+# The values in this file are purely examples to better help understand what it
+# is you need to add
+#
+# The application configuration is read using the Dotenv component
+# (see https://www.npmjs.com/package/dotenv)
+
+# The environment that the service is running in.
+# Currently one of the following:
+# - development
+# - test
+# - production
+NODE_ENV='development'
+
+# The port the service will listen on
+PORT=3030
+
+# The 'base' URL for the decision service called for charge calculations
+DECISION_SERVICE_URL='https://my-rules-service.example.com/decisions/v1'
+
+# credentials for the decision service
+DECISION_SERVICE_USER='user'
+DECISION_SERVICE_PASSWORD='password'
+
+# decision service end-points per regime
+CFD_APP='cfd-app-endpoint'
+CFD_RULESET='cfd-ruleset-endpoint'
