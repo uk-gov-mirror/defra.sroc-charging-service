@@ -10,24 +10,6 @@ server.connection({
   port: config.port
 })
 
-// server.route({
-//   method: 'GET',
-//   path: '/test',
-//   handler: (req, res) => {
-//     res('Test message')
-//   }
-// })
-//
-// server.route({
-//   method: 'POST',
-//   path: '/v{version}/calculate-charge',
-//   handler: (req, res) => {
-//     server.log('info', req.payload)
-//     const data = req.payload
-//     res('version: ' + req.params.version + ' - charge request' + ' ' + data.regime)
-//   }
-// })
-
 server.register([
   {
     register: Good,
