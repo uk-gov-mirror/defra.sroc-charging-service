@@ -5,6 +5,10 @@ const config = module.exports = {}
 config.nodeEnvironment = process.env.NODE_ENV || 'production'
 config.port = process.env.PORT || 3002
 
+// proxy
+config.httpProxy = process.env.http_proxy
+config.httpsProxy = process.env.https_proxy
+
 // Decision service config
 config.decisionService = {
   url: process.env.DECISION_SERVICE_URL,
