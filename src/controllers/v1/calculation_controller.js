@@ -1,8 +1,7 @@
 'use strict'
 
-const axios = require('axios')
+const rp = require('request-promise')
 const config = require('../../config/config')
-const url = require('url')
 
 module.exports = class CalculationController {
   constructor(request, reply, errors) {
@@ -30,28 +29,29 @@ module.exports = class CalculationController {
       // TODO: check params for validity
       //
       let options = {
+        method: 'POST',
+        uri: this.makeRulesPath(regime, year),
+        body: {
+          tcmChargingRequest: chargeRequest
+        },
+        json: true,
         auth: {
           username: service.username,
           password: service.password
         }
       }
       if (config.httpProxy) {
-        let proxy = url.parse(config.httpProxy)
-        options['proxy'] = {
-          host: proxy.hostname,
-          port: proxy.port
-        }
+        options['proxy'] = config.httpProxy
       }
 
-      axios.post(this.makeRulesPath(regime, year), {
-        tcmChargingRequest: chargeRequest
-      },
-        options
-      )
-      .then(res => {
-        // TODO: we could decorate this response if we wanted to here...
-        this.reply(this.buildReply(res.data))
-      })
+      rp(options)
+        .then((data) => {
+          this.reply(this.buildReply(data))
+        })
+        .catch((error) => {
+          console.log(error)
+          this.reply({ error: error })
+        })
     } catch( error ) {
       console.log(error)
       this.reply({ error: error })
