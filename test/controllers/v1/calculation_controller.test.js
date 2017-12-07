@@ -11,7 +11,6 @@ const { URL } = require('url')
 const CalculationController = require('../../../src/controllers/v1/calculation_controller')
 
 let controller
-let replyCallback
 let request
 let errors
 let nockScope
@@ -58,7 +57,7 @@ function makeUrl (slug, year) {
 // Cannot get this to work correctly - replyCallback always appears uncalled
 // even though it appears that it is called ...
 // lab.experiment('calculate()', () => {
-//   let callCount
+//   let replyCallback
 //
 //   lab.beforeEach(() => {
 //     replyCallback = sinon.spy()
