@@ -13,7 +13,9 @@
     "node": "8.x"
   },
   "scripts": {
-    "test": "standard"
+    "test": "lab",
+    "test-cov-html": "lab -r html -o coverage.html",
+    "lint": "standard"
   },
   "dependencies": {
     "dotenv": "4.0.0",
@@ -26,7 +28,12 @@
     "request-promise": "4.2.2"
   },
   "devDependencies": {
+    "code": "5.1.2",
+    "lab": "15.1.2",
+    "mockery": "2.1.0",
+    "nock": "9.1.4",
     "nodemon": "1.12.1",
+    "sinon": "4.1.2",
     "standard": "10.0.3"
   },
   "standard": {

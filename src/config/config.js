@@ -20,5 +20,13 @@ config.endpoints = {
   cfd: {
     application: process.env.CFD_APP,
     ruleset: process.env.CFD_RULESET
+  },
+  pas: {
+    application: process.env.PAS_APP,
+    ruleset: process.env.PAS_RULESET
+  },
+  wml: {
+    application: process.env.WML_APP,
+    ruleset: process.env.WML_RULESET
   }
 }
