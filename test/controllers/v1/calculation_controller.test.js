@@ -51,7 +51,7 @@ function makeUrl (slug, year) {
   const endpoint = config.endpoints[slug]
   return config.decisionService.url + '/' +
     endpoint.application + '/' +
-    endpoint.ruleset + '_' + year + '-' + (year + 1)
+    endpoint.ruleset + '_' + year + '_' + (year - 1999)
 }
 
 // Cannot get this to work correctly - replyCallback always appears uncalled

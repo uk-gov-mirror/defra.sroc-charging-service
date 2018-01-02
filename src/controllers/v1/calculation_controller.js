@@ -68,9 +68,17 @@ module.exports = class CalculationController {
   makeRulesPath (regime, year) {
     // generate the url for the correct regime, year and ruleset
     const endpoint = config.endpoints[regime.toLowerCase()]
-    const fy = '_' + year + '-' + (year + 1)
+    const fy = '_' + year + '_' + (year - 1999)
     return (
       config.decisionService.url + '/' + endpoint.application + '/' + endpoint.ruleset + fy
+    )
+  }
+
+  makeOldRulesPath (regime, year) {
+    // generate the url for the correct regime, year and ruleset
+    const endpoint = config.endpoints[regime.toLowerCase()]
+    return (
+      config.decisionService.url + '/' + endpoint.application + '/' + endpoint.ruleset
     )
   }
 
