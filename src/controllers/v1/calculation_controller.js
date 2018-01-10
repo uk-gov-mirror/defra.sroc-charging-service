@@ -19,12 +19,28 @@ module.exports = class CalculationController {
           this.reply(this.buildReply(data))
         })
         .catch((error) => {
-          console.log(error)
-          this.reply({ error: error })
+          this.replyWithError(error)
         })
     } catch (error) {
-      console.log(error)
-      this.reply({ error: error })
+      this.replyWithError(error)
+    }
+  }
+
+  replyWithError (error) {
+    let payload = {}
+
+    try {
+      if (typeof(error.error) !== "undefined" && error.error !== null) {
+        payload = { calculation: { messages: error.error.message } }
+      } else {
+        payload = { calculation: { messages: error.message } } 
+      }
+      console.log("========== Handling error from Rules service ==========")
+      console.log(payload)
+      console.log("=======================================================")
+      this.reply(payload).code(500)
+    } catch (err) {
+      console.log(err)
     }
   }
 
