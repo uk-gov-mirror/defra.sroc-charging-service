@@ -24,15 +24,15 @@
     "good-squeeze": "5.0.2",
     "hapi": "16.6.2",
     "hapi-router": "3.5.0",
-    "request": "2.83.0",
+    "request": "^2.88.0",
     "request-promise": "4.2.2"
   },
   "devDependencies": {
-    "code": "5.1.2",
+    "code": "^5.2.4",
     "lab": "15.1.2",
     "mockery": "2.1.0",
     "nock": "9.1.4",
-    "nodemon": "1.12.1",
+    "nodemon": "^1.18.10",
     "sinon": "4.1.2",
     "standard": "10.0.3"
   },
