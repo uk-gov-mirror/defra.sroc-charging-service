@@ -1,6 +1,6 @@
 {
   "name": "sroc-charging-rules",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "API wrapper for Strategic Review of Charges programme charging rules service",
   "author": "Environment Agency",
   "license": "SEE LICENSE IN LICENCE",
