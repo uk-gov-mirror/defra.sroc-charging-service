@@ -9,7 +9,7 @@ NOTE: This is currently a prototype and expected to be used as an internally fac
 Please make sure the following are installed:
 
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-- [Node.js v8.*](https://nodejs.org/en/)
+- [Node.js v12.*](https://nodejs.org/en/)
 - [StandardJS](https://standardjs.com/) using `npm install -g standard`
 
 ## Installation

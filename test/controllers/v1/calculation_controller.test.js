@@ -1,19 +1,9 @@
-'use strict'
-
-const nock = require('nock')
-const sinon = require('sinon')
-const Code = require('code')
-const Lab = require('lab')
-const lab = exports.lab = Lab.script()
-const expect = Code.expect
-const config = require('../../../src/config/config')
-const { URL } = require('url')
-const CalculationController = require('../../../src/controllers/v1/calculation_controller')
-
-let controller
-let request
-let errors
-let nockScope
+const Code = require('@hapi/code')
+const Lab = require('@hapi/lab')
+const { before, describe, it } = exports.lab = Lab.script()
+const { expect } = Code
+const config = require('../../../src/config')
+const controller = require('../../../src/controllers/v1/calculation_controller')
 
 const dummyRequest = {
   regime: 'cfd',
@@ -48,73 +38,44 @@ const dummyResponse = {
 }
 
 function makeUrl (slug, year) {
-  const endpoint = config.endpoints[slug]
+  const endpoint = config.decisionService.endpoints[slug]
   return config.decisionService.url + '/' +
     endpoint.application + '/' +
     endpoint.ruleset + '_' + year + '_' + (year - 1999)
 }
 
-// Cannot get this to work correctly - replyCallback always appears uncalled
-// even though it appears that it is called ...
-// lab.experiment('calculate()', () => {
-//   let replyCallback
-//
-//   lab.beforeEach(() => {
-//     replyCallback = sinon.spy()
-//     request = {
-//       payload: dummyRequest
-//     }
-//     errors = null
-//     controller = new CalculationController(request, replyCallback, errors)
-//
-//     let nockUrl = new URL(makeUrl(dummyRequest.regime, dummyRequest.financialYear))
-//     nockScope = nock(nockUrl.origin)
-//       .post(nockUrl.pathname)
-//       .reply(200, dummyResponse)
-//   })
-//
-//   lab.test('proxies request from client to rules service', async () => {
-//     controller.calculate()
-//     expect(replyCallback.called).to.be.true()
-//   })
-// })
-
-lab.experiment('buildRequest(payload)', () => {
+describe('buildRequest(payload)', () => {
   let request
 
-  lab.beforeEach(() => {
-    controller = new CalculationController()
+  before(() => {
     request = controller.buildRequest(dummyRequest)
   })
 
-  lab.test('wraps payload.chargeRequest', async () => {
+  it('wraps payload.chargeRequest', async () => {
     expect(request.body.tcmChargingRequest).to.equal(dummyRequest.chargeRequest)
   })
 
-  lab.test('sets method to POST', async () => {
+  it('sets method to POST', async () => {
     expect(request.method).to.equal('POST')
   })
 
-  lab.test('sets correct uri', async () => {
+  it('sets correct uri', async () => {
     expect(request.uri).to.equal(
       makeUrl(dummyRequest.regime, dummyRequest.financialYear))
   })
 
-  lab.test('sets json flag', async () => {
+  it('sets json flag', async () => {
     expect(request.json).to.be.true()
   })
 
-  lab.test('sets authentication params', async () => {
+  it('sets authentication params', async () => {
     expect(request.auth.username).to.equal(config.decisionService.username)
     expect(request.auth.password).to.equal(config.decisionService.password)
   })
 })
 
-lab.experiment('buildReply(data)', () => {
-  lab.beforeEach(() => {
-    controller = new CalculationController()
-  })
-  lab.test('wraps response data', async () => {
+describe('buildReply(data)', () => {
+  it('wraps response data', async () => {
     const reply = controller.buildReply(dummyResponse)
     expect(reply.uuid).to.equal(dummyResponse.__DecisionID__)
     expect(reply.generatedAt).to.be.a.date()
@@ -122,11 +83,8 @@ lab.experiment('buildReply(data)', () => {
   })
 })
 
-lab.experiment('makeRulesPath(regime, year)', () => {
-  lab.beforeEach(() => {
-    controller = new CalculationController()
-  })
-  lab.test('returns correct url for Water Quality', async () => {
+describe('makeRulesPath(regime, year)', () => {
+  it('returns correct url for Water Quality', async () => {
     const slug = 'cfd'
     const year = 2017
     const url = makeUrl(slug, year)
@@ -134,7 +92,7 @@ lab.experiment('makeRulesPath(regime, year)', () => {
     expect(controller.makeRulesPath(slug, year)).to.equal(url)
   })
 
-  lab.test('returns correct url for Waste', async () => {
+  it('returns correct url for Waste', async () => {
     const slug = 'wml'
     const year = 2019
     const url = makeUrl(slug, year)
@@ -142,7 +100,7 @@ lab.experiment('makeRulesPath(regime, year)', () => {
     expect(controller.makeRulesPath(slug, year)).to.equal(url)
   })
 
-  lab.test('returns correct url for Installations', async () => {
+  it('returns correct url for Installations', async () => {
     const slug = 'pas'
     const year = 2021
     const url = makeUrl(slug, year)
