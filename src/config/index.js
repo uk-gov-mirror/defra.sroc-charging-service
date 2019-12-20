@@ -59,7 +59,7 @@ const schema = joi.object({
     httpsProxy: joi.string().allow(null)
   }),
   server: joi.object({
-    port: joi.number().default(3002).required(),
+    port: joi.number().default(3002),
     router: joi.object({
       isCaseSensitive: joi.boolean().default(false),
       stripTrailingSlash: joi.boolean().default(true)
