@@ -13,7 +13,7 @@
     "node": "12.x"
   },
   "scripts": {
-    "unit-test": "lab -c -r console -o stdout -r html -o coverage.html -r lcov -o lcov.info -v",
+    "unit-test": "lab",
     "lint": "standard",
     "test": "npm run lint && npm run unit-test"
   },
