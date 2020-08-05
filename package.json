@@ -26,8 +26,8 @@
     "airbrake-js": "^2.0.0-beta.3",
     "blipp": "^4.0.1",
     "dotenv": "^8.2.0",
-    "request": "^2.88.0",
-    "request-promise-native": "^1.0.8"
+    "request": "^2.88.2",
+    "request-promise-native": "^1.0.9"
   },
   "devDependencies": {
     "@hapi/code": "^8.0.2",
