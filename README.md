@@ -1,5 +1,11 @@
 # SRoC Charging Service
 
+[![Build Status](https://travis-ci.com/DEFRA/sroc-charging-service.svg?branch=master)](https://travis-ci.com/DEFRA/sroc-charging-service)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_sroc-charging-service&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=DEFRA_sroc-charging-service)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_sroc-charging-service&metric=coverage)](https://sonarcloud.io/dashboard?id=DEFRA_sroc-charging-service)
+[![Known Vulnerabilities](https://snyk.io/test/github/DEFRA/sroc-charging-service/badge.svg)](https://snyk.io/test/github/DEFRA/sroc-charging-service)
+[![Licence](https://img.shields.io/badge/Licence-OGLv3-blue.svg)](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3)
+
 A lightweight wrapper service to abstract away and simplify calls into the rules/decision engine service. This charging service determines which rules service endpoint to call and repackages the JSON payload of the callers request to suit.  The rules service calculates charges based upon the artifacts provided in the request payload and returns a charge and decision points in its response. The response is then repackaged by the charging service and returned to the caller.
 
 NOTE: This is currently a prototype and expected to be used as an internally facing service in its current form i.e. not secure for public facing networks.
