@@ -30,8 +30,8 @@
     "request-promise-native": "^1.0.8"
   },
   "devDependencies": {
-    "@hapi/code": "^7.0.0",
-    "@hapi/lab": "^21.0.0",
+    "@hapi/code": "^8.0.2",
+    "@hapi/lab": "^23.0.0",
     "sinon": "^7.5.0",
     "standard": "^14.3.1"
   },
