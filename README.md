@@ -1,6 +1,6 @@
 # SRoC Charging Service
 
-[![Build Status](https://travis-ci.com/DEFRA/sroc-charging-service.svg?branch=master)](https://travis-ci.com/DEFRA/sroc-charging-service)
+![Build Status](https://github.com/DEFRA/sroc-charging-service/workflows/CI/badge.svg?branch=master)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_sroc-charging-service&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=DEFRA_sroc-charging-service)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_sroc-charging-service&metric=coverage)](https://sonarcloud.io/dashboard?id=DEFRA_sroc-charging-service)
 [![Known Vulnerabilities](https://snyk.io/test/github/DEFRA/sroc-charging-service/badge.svg)](https://snyk.io/test/github/DEFRA/sroc-charging-service)
